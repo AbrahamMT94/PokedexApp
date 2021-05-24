@@ -1,1 +1,1 @@
-#Sample pokedex app
+Sample pokedex app
