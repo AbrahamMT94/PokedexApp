@@ -8,14 +8,14 @@ import Button from '@material-ui/core/Button';
 import Header from './Components/Header'
 
 
-{/*As a Pokemon enthusiast I want to be able to search for the information about a specific
-Pokemon aka search by name or order and pull related data */}
+/*As a Pokemon enthusiast I want to be able to search for the information about a specific
+Pokemon aka search by name or order and pull related data 
 
-{/*
-  note this is not the most efficient way of performing the task. 
-  Ideally since it is rarely changed data we could pull the entire list and work with it
-  However for this example we'll assume that data will always come from the api
-*/}
+
+note this is not the most efficient way of performing the task. 
+Ideally since it is rarely changed data we could pull the entire list and work with it
+However for this example we'll assume that data will always come from the api
+*/
 
 
 class App extends Component {
@@ -111,9 +111,11 @@ class App extends Component {
               var temp = this.state.pokemonDetails
               temp.push(data)
               this.setState({pokemonDetails: temp})
+              return;
             }            
           })
           .catch(console.log)
+          return true;
         })
       }
     })
