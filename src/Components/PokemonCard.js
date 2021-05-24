@@ -4,9 +4,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid  from "@material-ui/core/Grid";
 
-// TO DO:
-/*
 
+/*
+TODO:
 As a Pokemon enthusiast I want to be able to see the information
 o Name
 o Weight
