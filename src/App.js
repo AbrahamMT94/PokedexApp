@@ -25,7 +25,7 @@ class App extends Component {
       pokemons : [],
       pokemonDetails : [],
       index: 0,
-      loadNumber: 20      
+      loadNumber: 20    
     }
     this.loadMore = this.loadMore.bind(this);
     this.searchByNameOrId = this.searchByNameOrId.bind(this);
@@ -42,7 +42,7 @@ class App extends Component {
         pokemons : [],
         pokemonDetails : [],
         index: 0,
-        loadNumber: 20     
+        loadNumber: 20   
       });
       this.getMorePokemon();
   }
@@ -50,12 +50,13 @@ class App extends Component {
   // loads more pokemos
   loadMore(event) {
     // we only load one if a search was performed so we reset state to prevent duplicates
-    if(this.state.pokemonDetails.length === 1){
+    if(this.state.pokemonDetails.length  <= 1){
+      console.log("reset state")
       this.resetState();
     }
     const newindex = this.getNextindex();
     
-    this.setState({index: newindex}, () => {
+    this.setState({index: newindex, }, () => {
       this.getMorePokemon();
     });
     
@@ -94,13 +95,12 @@ class App extends Component {
 
   // loads a segment of the pokemons
   getMorePokemon() {
-    let url = "https://pokeapi.co/api/v2/pokemon?index=" + this.state.index + "&limit=" + this.state.loadNumber;
-
+    let url = "https://pokeapi.co/api/v2/pokemon?offset=" + this.state.index + "&limit=" + this.state.loadNumber;
+    console.log(url)
     fetch(url)
     .then(response => response.json())
     .then(data => {
       if (data) {
-        
         this.setState({pokemons : data.results})
 
         this.state.pokemons.map(pokemon => {
@@ -111,7 +111,6 @@ class App extends Component {
               var temp = this.state.pokemonDetails
               temp.push(data)
               this.setState({pokemonDetails: temp})
-              return;
             }            
           })
           .catch(console.log)
@@ -127,7 +126,7 @@ class App extends Component {
 
     const renderedPokemonList = pokemonDetails.map((pokemon, index) => {
       // map our pokemon to our cards
-      return (<PokemonCard pokemon={pokemon} />);
+      return (<PokemonCard pokemon={pokemon} key={index} />);
     });
 
 
