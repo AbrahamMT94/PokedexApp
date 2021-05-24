@@ -14,7 +14,7 @@ o Order
 */
 const PokemonCard = ({pokemon}) => {
     return (
-        <Grid item xs={3} key={pokemon.id}>
+        <Grid item  key={pokemon.id}>
             <div>
                 <Card key={pokemon.id}>
                      <CardContent key={pokemon.id}>
